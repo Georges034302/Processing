@@ -1,7 +1,7 @@
 // Simple Algorithmic Face
 size(600, 800);
-background(0);
-stroke(255);
+background(15,50,20,2);
+stroke(255,44,100);
 noFill();
 // draw ellipses from top left corner
 ellipseMode(CORNER);

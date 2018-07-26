@@ -1,6 +1,6 @@
 size(600, 600);
 noStroke();
-background(119, 79, 56);
+background(110, 179, 56);
 fill(197, 224, 220);
 rect(0, 500, 600, 200);
 stroke(224, 142, 121);
