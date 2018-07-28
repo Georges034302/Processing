@@ -5,7 +5,7 @@ Animation animation1, animation2;
 void setup() {
   size(640, 360);
   background(255, 204, 0);
-  frameRate(24);
+  frameRate(30);
   animation1 = new Animation("ghost_1", 10);
   animation2 = new Animation("ghost_2", 10);
   
