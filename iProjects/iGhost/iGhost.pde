@@ -1,31 +1,34 @@
 float xpos;
 float ypos;
-float drag = 30.0;
-Animation animation1, animation2;
+
+Animation ghost1, ghost2, mario1, mario2;
 void setup() {
   size(640, 360);
   background(255, 204, 0);
   frameRate(30);
-  animation1 = new Animation("ghost_1", 10);
-  animation2 = new Animation("ghost_2", 10);
-  
-  ypos = height * 0.25;
+  ghost1 = new Animation("ghost_1", 10);
+  ghost2 = new Animation("ghost_2", 10);
+  mario1 = new Animation("mario_3", 10);
+  mario2 = new Animation("mario_2", 10); 
 }
 
 void draw() { 
-  float dx = mouseX - xpos;
-  xpos = xpos + dx/drag;
+  xpos = lerp(xpos, mouseX, 0.05);
+  ypos = lerp(ypos, mouseY, 0.05);
+  //xpos = xpos + dx/drag;
 
   // Display the sprite at the position xpos, ypos
   if (mousePressed) {
     background(153, 153, 0);
-    animation2.display(xpos-animation1.getWidth()/2, ypos);
+    ghost2.display(xpos, ypos);
+    mario2.display(xpos,ypos+50);
   } 
 }
 
 void mouseMoved(){
-    background(153, 153, 0);
-    animation1.display(xpos-animation1.getWidth()/2, ypos);
+    background(153, 153, 0);   
+    ghost1.display(xpos, ypos);
+    mario1.display(xpos+80, ypos+80);
 }
 
 
@@ -40,11 +43,10 @@ class Animation {
     imageCount = count;
     images = new PImage[imageCount];
 
-    for (int i = 0; i < imageCount; i++) {
-      // Use nf() to number format 'i' into four digits
+    for (int i = 0; i < imageCount; i++) {      
       String filename = imagePrefix + ".gif";
       images[i] = loadImage(filename);
-      images[i].resize(0,50);
+      images[i].resize(0,70);
     }
   }
 
