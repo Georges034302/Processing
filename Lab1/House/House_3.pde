@@ -1,7 +1,4 @@
-size(700,500);
-background(#80BF7F);
-stroke(#B96613);
-strokeWeight(4);
+/*
 fill(#898582);
 rect(150,200,200,200);
 fill(#898582);
@@ -16,4 +13,7 @@ fill(#554004);
 ellipse(260, 350, 10, 10);
 fill(#462708);
 noStroke();
-rect(450,150,20,150);
+rect(500,250,20,150);
+fill(#17900D);
+ellipse(508, 180, 180, 150);
+*/
