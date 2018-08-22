@@ -34,7 +34,7 @@ void draw() {
 void scroll(){
   image(canvas,speed,0);
   image(canvas, speed+canvas.width, 0);
-  speed-=10;
+  speed-=20;
   if( speed < -canvas.width) speed =0;
 }
 
