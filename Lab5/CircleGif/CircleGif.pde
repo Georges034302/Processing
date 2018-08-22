@@ -21,6 +21,7 @@ void draw() {
 
   float size = rate * sin(TWO_PI * frames / float(totalFrames)) + 2*rate;
   ellipse(width/2, height/2, size, size);
+  frames++; 
   export();
 }
 
@@ -32,6 +33,5 @@ void mousePressed() {
 
 void export() {
     gifExport.setDelay(20);
-    gifExport.addFrame();
-    frames++; 
+    gifExport.addFrame();    
   }

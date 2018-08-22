@@ -6,7 +6,7 @@ int x, y, mx, my, gx, gy;
 float w, h , scale;
 PImage canvas;
 int speed;
-int frameFrequency = 150;
+int frameFrequency;
 
 GifMaker maker;
 
@@ -50,6 +50,7 @@ void setExport(){
 void export(){        
     maker.addFrame();    
     if(mousePressed == true){
+        maker.finish();   
         print("Mario world GIF has been created");
         exit();
     }
@@ -61,9 +62,10 @@ void setDimensions(){
     gx = x-ghost.width;
     gy = y-ghost.height;    
     mx = gx+mario.width;
-    my = y+mario.width/2;
+    my = y+mario.height/2;
     w = x/2;
     h = y/2;
     scale = 0.8;
+    frameFrequency = 150;
     println("Welcome to Mario World ");
 }

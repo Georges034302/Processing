@@ -2,12 +2,6 @@ int radius = 30;
 Ball[] balls = new Ball[10];
 float x, y;
 
-
-int xdirection =1;
-int ydirection =1;
-float xspeed = 2.5;
-float yspeed = 5.9;
-
 void setup() {
   size(600, 600);
   noStroke();
@@ -42,6 +36,8 @@ class Ball {
   private float y;
   private float dx;
   private float dy;
+  private float vx;
+  private float vy;
   private float radius;
   private float speed = 0.5;
   private float gravity = 0.5;
@@ -57,7 +53,7 @@ class Ball {
     float dx = other.x - x;
     float dy = other.y - y;
     float delta = sqrt(pow(dx, 2)+pow(dy, 2));
-    float minDelta = this.radius/2+ other.radius/2;
+    float minDelta = this.radius+ other.radius;
 
     if (delta < minDelta) {
       float angle = atan2(dx, dy);
@@ -65,10 +61,10 @@ class Ball {
       float nextY = y+ sin(angle)*minDelta; 
       float ax = (nextX-other.x)*speed;
       float ay = (nextY-other.y)*speed;
-      this.dx -= ax;
-      this.dy -= ay;
-      other.dx += ax;
-      other.dy += ay;
+      this.vx -= ax;
+      this.vy -= ay;
+      other.vx += ax;
+      other.vy += ay;
     }
     
   }
@@ -88,22 +84,22 @@ class Ball {
   }
 
   public void move() {
-    dy +=gravity;
-    x += dx;
-    y += dy;
+    vy +=gravity;
+    x += vx;
+    y += vy;
 
     if (x + radius > width) {     
       x = width - radius;
-      dx *= -speed;
-    } else if (y + radius > width) { 
-      y = width - radius;
-      dy *= -speed;
+      vx *= -speed;
+    } else if (y + radius > height) { 
+      y = height - radius;
+      vy *= -speed;
     } else if (x - radius < 0) {   
       x = radius; 
-     dx *= -speed;
+     vx *= -speed;
     } else if (y - radius < 0) {        
       y = radius;
-      dy *= -speed;
+      vy *= -speed;
     }
   }
 
