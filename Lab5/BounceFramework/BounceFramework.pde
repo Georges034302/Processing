@@ -10,12 +10,14 @@ void initialize(){
    size = 10; 
    balls = new Ball[size];
    for(int i=0; i< size; i++)
-       balls[i] = new Ball(random(width), random(height), 30);
+       balls[i] = new Ball(random(width), random(height), 50);
 }
 
 void play(){
-    for(Ball ball: balls)
+    for(Ball ball: balls){      
+      ball.plotBall();
       ball.move();
+    }
 }
 void draw(){
     background(150);
