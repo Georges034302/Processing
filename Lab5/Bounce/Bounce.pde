@@ -7,8 +7,8 @@
 int rad = 30;        // Width of the shape
 float xpos, ypos;    // Starting position of shape    
 
-float xspeed = 10.8;  // Speed of the shape
-float yspeed = 8.2;  // Speed of the shape
+float xspeed = 3.8;  // Speed of the shape
+float yspeed = 2.2;  // Speed of the shape
 
 int xdirection = 1;  // Left or Right
 int ydirection = 1;  // Top to Bottom
