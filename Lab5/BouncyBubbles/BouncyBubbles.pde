@@ -1,11 +1,3 @@
-/**
- * Bouncy Bubbles  
- * based on code from Keith Peters. 
- * 
- * Multiple-object collision.
- */
- 
- 
 int numBalls = 12;
 float spring = 0.05;
 float gravity = 0.03;
