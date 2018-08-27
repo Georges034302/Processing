@@ -56,22 +56,49 @@ void setGhost() {
   ghost.loop();  
 }
 
-//====================Set Screen Controls ======================//
-void controlPanel() {
-    //TASK2: Add screen commands to control animations 
-}
-
-void keyPressed() {
-   //TASK 3: Enable screen key-commands to control animations
-}
-
-//====================Set Animation Controls=====================//
 void scroll(){
    image(canvas,flip,0);
    image(canvas,flip+width,0);
    flip-=speed;
    if(flip < -canvas.width) flip = 0;
 }
+
+//====================Set Screen Controls ======================//
+void controlPanel() {
+  textAlign(CENTER);
+  fill(255);
+  if (!recording) {
+    text("Press r to start recording.", x, height-24);
+  } else {
+    text("Press R to stop recording.", x, height-24);
+  }
+  if (!playing) {
+    text("Press p to play the game.", x, height-24);
+  } else {
+    text("Press P to pause the game.", x+5, height-8);
+  }
+  text("Press s to speed.",x/5,height-24);
+  text("Press S to slow.",x/5-5,height-8);
+  text("Press x to exist.",2*x-50,height-8);
+  stroke(255);
+  if (recording) {
+    fill(255, 0, 0);
+  } else { 
+    noFill();
+  }
+  ellipse(width/2, height-48, 16, 16);
+}
+
+void keyPressed() {
+  if (key == 'r' || key == 'R') recording = !recording;
+  if(key == 'p') playing = true;
+  if(key == 'P') playing = !playing; 
+  if(key == 'X' ||  key == 'x') stopping = !stopping;  
+  if(key == 's') speed +=5;
+  if(key == 'S') speed -=5;
+}
+
+//====================Set Animation Controls=====================//
 void play() {
   scroll();
   image(mario, mx, my, w*scale, h*scale);
@@ -80,14 +107,14 @@ void play() {
 }
 
 void saveGif() {
-  //Task 4: enable saving gif action 
+  if (recording) maker.addFrame();  
 }
 
 void end(){
-    //Task 5: enable gif maker finish and exit
+    if(stopping){ maker.finish(); exit();}
 }
 void run(){
-  //TASK 1: Make the game start 
+  if(playing) play();
 }
 
 //=========================Draw Graphics==========================//
