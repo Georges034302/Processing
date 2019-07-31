@@ -1,5 +1,5 @@
 // Simple House
-size(600, 600);
+//size(600, 600);
 /*
 // house
 rect(50, 250, 300, 300);
