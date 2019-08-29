@@ -16,14 +16,27 @@ public void setup() {
   smooth(3);
   canvas=loadImage("background.png");
   canvas.resize(width,height);  
-  mario = new Gif(this, "mario_run.gif");
+  mario = new Gif(this, "mario.gif");
   mario.loop();
-  ghost = new Gif(this, "ghost_sleep.gif"); 
+  ghost = new Gif(this, "ghost.gif"); 
   ghost.loop();
   setDimensions();  
   setExport();
 }
 
+void setDimensions(){
+    x = width/2;
+    y = height/2;
+    gx = x-ghost.width;
+    gy = y-ghost.height;    
+    mx = gx+mario.width;
+    my = y+mario.height/2;
+    w = x/2;
+    h = y/2;
+    scale = 0.8;
+    frameFrequency = 150;
+    println("Welcome to Mario World ");
+}
 void draw() { 
   scroll();
   move(mario, mx,my,w,h);
@@ -54,18 +67,4 @@ void export(){
         print("Mario world GIF has been created");
         exit();
     }
-}
-
-void setDimensions(){
-    x = width/2;
-    y = height/2;
-    gx = x-ghost.width;
-    gy = y-ghost.height;    
-    mx = gx+mario.width;
-    my = y+mario.height/2;
-    w = x/2;
-    h = y/2;
-    scale = 0.8;
-    frameFrequency = 150;
-    println("Welcome to Mario World ");
 }

@@ -1,5 +1,5 @@
 int radius = 30;
-Ball[] balls = new Ball[10];
+Ball[] balls = new Ball[5];
 float x, y;
 
 void setup() {
@@ -40,7 +40,7 @@ class Ball {
   private float vy;
   private float radius;
   private float speed = 0.5;
-  private float gravity = 0.5;
+  private float gravity = 0.4;
 
 
   public Ball(float x, float y, int radius) {

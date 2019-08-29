@@ -2,7 +2,6 @@ import gifAnimation.*;
 
 //==================Program Global Variables=========================//
 boolean recording = false;
-boolean saving = false;
 boolean stopping = false;
 GifMaker maker;
 float x;
@@ -48,24 +47,23 @@ void framesControl() {
 void gifControl() {
   textAlign(CENTER);
   fill(255);
-  if (!saving) text("Press s to save as gif.", x-x/2, height-24);
-  else text("Press S to stop saving gif.", x-x/2, height-24);
+  if (!stopping) text("Press s to save as gif.", x-x/2, height-24);
+  else text("Press s to stop saving gif.", x-x/2, height-24);
 
   stroke(255);
-  if (saving) fill(255, 0, 0);
+  if (stopping) fill(255, 0, 0);
   else noFill(); 
   ellipse(x-x/2, height-48, 16, 16);
 }
 
 void keyPressed() {   
   if (key == 'r' || key == 'R') recording = !recording;
-  if (key == 's' ) saving = !saving;
-  if (key == 'S') stopping = !stopping;
+  if (key == 's' || key == 'S') stopping = !stopping;
 }
 
 //===================Set Animation Controls===========================//
 void saveGif() {
-  if (saving) maker.addFrame();
+  if (recording) maker.addFrame();
 }
 void end() {
   if (stopping) { 
@@ -74,7 +72,7 @@ void end() {
   }
 }
 void saveFrames() {
-  if (recording) saveFrame("output/frames####.png");
+  if (stopping) saveFrame("output/frames####.png");
 }
 
 //=========================Draw Graphics===============================//
@@ -86,6 +84,5 @@ void draw() {
   gifControl();
   saveFrames();
   saveGif();
-  end();
 }
 //==========================End Program================================//
