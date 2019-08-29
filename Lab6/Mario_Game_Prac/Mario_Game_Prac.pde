@@ -1,9 +1,9 @@
 import gifAnimation.*;
 
 //=======================================Game Global Variables=====================================//
-float x, y; //main screen coordinates
+int x, y; //main screen coordinates
 float w,h; //mario and ghost width and height
-float mx,my,gx,gy; // mario and ghost coordinates
+int mx,my,gx,gy; // mario and ghost coordinates
 float groundlevel; //determines the groud level where mario runs and should land after a flight
 PImage canvas; //used to add png image on top of the main screen
 int pos; //canvas position
