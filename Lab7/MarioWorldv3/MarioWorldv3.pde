@@ -68,27 +68,28 @@ void setGhost() {
 
 //====================Set Screen Controls ======================//
 void controlPanel() {
+  int e=15;
   textAlign(CENTER);
   fill(255);
-  textSize(16);
+  textSize(e);
   fill(#05F0FA);
-  text("r: record", x, height-20);
+  text("r: record", x, height-e);
   fill(#0CEA23);
-  text("spacebar: play/pause", x, height-80);
+  text("spacebar: play/pause", x, height-5*e);
   fill(#EAE40C);
-  text("f: fly", x/15-15, height-85);
-  text("a: attack", x/15, height-60);
-  text("s: speed", x/15, height-35);
-  text("S: slow", x/15-5, height-10); 
+  text("f: fly", x/e-e, height-4*e);
+  text("a: attack", x/e, height-3*e);
+  text("s: speed", x/e, height-2*e);
+  text("S: slow", x/e-5, height-e); 
   fill(#E8950E);
-  text("x: exist", 2*x-50, height-10);
+  text("x: exist", 2*x-50, height-e);
   stroke(255);
   if (recording) {
     fill(255, 0, 0);
   } else { 
     noFill();
   }
-  ellipse(width/2, height-48, 16, 16);
+  ellipse(x, height-3*e, e, e);
 }
 
 void keyPressed() {
@@ -96,14 +97,13 @@ void keyPressed() {
   if (key == 'r') recording = !recording;
   if (key == 'x') ending = !ending;  
   if (key == 's') speed +=5;
-  if (key == 'S') speed -=5;
+  if (key == 'S') {speed = (speed > 0) ? speed-5 :0 ;}
   if (key == 'f') jumping = true; 
   if (key == 'a') attacking = !attacking;
 }
 
 void keyReleased() {
   if (key == 'f') jumping = false;
-  //if(key == 'a') attacking = false;
 }
 //====================Set Animation Controls=====================//
 
